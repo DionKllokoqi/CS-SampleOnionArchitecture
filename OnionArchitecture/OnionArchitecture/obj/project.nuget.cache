@@ -1,0 +1,15 @@
+{
+  "version": 2,
+  "dgSpecHash": "38BQEmsRTY8aFC9JIBlxP2sohC/BqGfJ7Wb41jvJGtmQIjgIRPoRG6lMRs2NIoTHa+1HQ6lSwDsWkFG4kM8RQg==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\dionk\\OpenSourceProjects\\CS-SampleOnionArchitecture\\OnionArchitecture\\OnionArchitecture\\OnionArchitecture.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\dionk\\.nuget\\packages\\microsoft.extensions.apidescription.server\\3.0.0\\microsoft.extensions.apidescription.server.3.0.0.nupkg.sha512",
+    "C:\\Users\\dionk\\.nuget\\packages\\microsoft.openapi\\1.2.3\\microsoft.openapi.1.2.3.nupkg.sha512",
+    "C:\\Users\\dionk\\.nuget\\packages\\swashbuckle.aspnetcore\\6.2.3\\swashbuckle.aspnetcore.6.2.3.nupkg.sha512",
+    "C:\\Users\\dionk\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\6.2.3\\swashbuckle.aspnetcore.swagger.6.2.3.nupkg.sha512",
+    "C:\\Users\\dionk\\.nuget\\packages\\swashbuckle.aspnetcore.swaggergen\\6.2.3\\swashbuckle.aspnetcore.swaggergen.6.2.3.nupkg.sha512",
+    "C:\\Users\\dionk\\.nuget\\packages\\swashbuckle.aspnetcore.swaggerui\\6.2.3\\swashbuckle.aspnetcore.swaggerui.6.2.3.nupkg.sha512"
+  ],
+  "logs": []
+}
