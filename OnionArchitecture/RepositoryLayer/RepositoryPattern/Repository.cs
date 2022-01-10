@@ -10,39 +10,75 @@ namespace RepositoryLayer.RepositoryPattern
 {
     public class Repository<T> : IRepository<T> where T: BaseEntity
     {
+        #region Private Fields
+        private readonly ApplicationDbContext _applicationDbContext;
+        private DbSet<T> _entities;
+        #endregion
+
+        #region CTOR & Init
+        public Repository(ApplicationDbContext applicationDbContext)
+        {
+            _applicationDbContext = applicationDbContext;
+            _entities = _applicationDbContext.Set<T>();
+        } 
+        #endregion
+
         public void Delete(T entity)
         {
-            throw new NotImplementedException();
+            if (entity == null)
+            {
+                throw new ArgumentNullException("entity");
+            }
+
+            _entities.Remove(entity);
+            _applicationDbContext.SaveChanges();
         }
 
         public IEnumerable<T> GetAll()
         {
-            throw new NotImplementedException();
+            return _entities.AsEnumerable();
         }
 
         public T GetT(int id)
         {
-            throw new NotImplementedException();
+            return _entities.SingleOrDefault(x => x.Id == id);
         }
 
         public void Insert(T entity)
         {
-            throw new NotImplementedException();
+            if (entity == null)
+            {
+                throw new ArgumentNullException("entity");
+            }
+
+            _entities.Add(entity);
+            _applicationDbContext.SaveChanges();
         }
 
         public void Remove(T entity)
         {
-            throw new NotImplementedException();
+            if (entity == null)
+            {
+                throw new ArgumentNullException("entity");
+            }
+
+            _entities.Remove(entity);
         }
 
         public void SaveChanges()
         {
-            throw new NotImplementedException();
+            _applicationDbContext.SaveChanges();
         }
 
         public void Update(T entity)
         {
-            throw new NotImplementedException();
+            if (entity == null)
+            {
+                throw new ArgumentNullException("entity");
+            }
+
+            _entities.Update(entity);
+            _applicationDbContext.SaveChanges();
         }
     }
 }
