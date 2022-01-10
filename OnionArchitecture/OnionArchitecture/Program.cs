@@ -1,5 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using RepositoryLayer;
+using RepositoryLayer.RepositoryPattern;
+using ServiceLayer.CustomerService;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -17,13 +19,18 @@ builder.Services.AddSwaggerGen(c =>
 builder.Services.AddDbContext<ApplicationDbContext>(item => item.UseSqlServer("name=ConnectionStrings:localOnionSql"));
 #endregion
 
+#region Services Injection
+builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
+builder.Services.AddTransient<ICustomerService, CustomerService>();
+#endregion
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
-    app.UseSwaggerUI();
+    app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.sjon", "OnionArchitecture v1"));
 }
 
 app.UseHttpsRedirection();
