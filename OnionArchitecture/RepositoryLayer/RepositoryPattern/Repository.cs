@@ -39,7 +39,7 @@ namespace RepositoryLayer.RepositoryPattern
             return _entities.AsEnumerable();
         }
 
-        public T GetT(int id)
+        public T Get(int id)
         {
             return _entities.SingleOrDefault(x => x.Id == id);
         }
