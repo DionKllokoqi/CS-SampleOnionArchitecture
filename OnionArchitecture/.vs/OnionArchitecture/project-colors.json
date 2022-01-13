@@ -1,0 +1,31 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "c145dfc6-1c7c-486e-8479-338fbb938656": {
+      "ProjectGuid": "c145dfc6-1c7c-486e-8479-338fbb938656",
+      "DisplayName": "OnionArchitecture",
+      "ColorIndex": 0
+    },
+    "e4ae83e8-04e9-4aae-8f47-959cab49aca9": {
+      "ProjectGuid": "e4ae83e8-04e9-4aae-8f47-959cab49aca9",
+      "DisplayName": "DomainEntityLayer",
+      "ColorIndex": 1
+    },
+    "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3": {
+      "ProjectGuid": "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3",
+      "DisplayName": "Miscellaneous Files",
+      "ColorIndex": -1
+    },
+    "94093306-366b-4d4b-a427-c09dd8b00f23": {
+      "ProjectGuid": "94093306-366b-4d4b-a427-c09dd8b00f23",
+      "DisplayName": "RepositoryLayer",
+      "ColorIndex": 2
+    },
+    "e4e19576-8133-44cb-8c32-1d3d988cce1c": {
+      "ProjectGuid": "e4e19576-8133-44cb-8c32-1d3d988cce1c",
+      "DisplayName": "ServiceLayer",
+      "ColorIndex": 3
+    }
+  },
+  "NextColorIndex": 4
+}

@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using DomainEntityLayer.Models;
+﻿using DomainEntityLayer.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace RepositoryLayer.RepositoryPattern
@@ -31,7 +26,7 @@ namespace RepositoryLayer.RepositoryPattern
             }
 
             _entities.Remove(entity);
-            _applicationDbContext.SaveChanges();
+            SaveChanges();
         }
 
         public IEnumerable<T> GetAll()
@@ -52,7 +47,7 @@ namespace RepositoryLayer.RepositoryPattern
             }
 
             _entities.Add(entity);
-            _applicationDbContext.SaveChanges();
+            SaveChanges();
         }
 
         public void Remove(T entity)
@@ -67,6 +62,33 @@ namespace RepositoryLayer.RepositoryPattern
 
         public void SaveChanges()
         {
+            var entries = _applicationDbContext.ChangeTracker.Entries().ToList();
+
+            foreach (var entry in entries)
+            {
+                if (entry.Entity is BaseEntity trackable)
+                {
+                    switch (entry.State)
+                    {
+                        case EntityState.Detached:
+                        case EntityState.Unchanged:
+                        case EntityState.Deleted:
+                            break;
+                        case EntityState.Modified:
+
+                            trackable.ModifiedDate = DateTime.UtcNow;
+                            entry.Property(nameof(trackable.CreatedDate)).IsModified = false;
+                            break;
+
+                        case EntityState.Added:
+
+                            trackable.CreatedDate = DateTime.UtcNow;
+                            trackable.ModifiedDate= DateTime.UtcNow;
+                            break;
+                    }
+                }
+            }
+
             _applicationDbContext.SaveChanges();
         }
 
@@ -78,7 +100,7 @@ namespace RepositoryLayer.RepositoryPattern
             }
 
             _entities.Update(entity);
-            _applicationDbContext.SaveChanges();
+            SaveChanges();
         }
     }
 }
